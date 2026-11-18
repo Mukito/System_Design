@@ -5,7 +5,7 @@ Vamos detalhar os quatro pilares fundamentais dessa camada:
 
 ### 1. DNS (Domain Name System) — O "Guia Telefônico" da Internet
 Antes de qualquer requisição HTTP acontecer, o sistema precisa descobrir onde o servidor está localizado.
-  * **O que faz**: Traduz nomes legíveis por humanos (ex: api.minhaempresa.com) em endereços IP numéricos (ex: 192.0.2.1 ou um IPv6).
+  * **O que faz**: Traduz nomes legíveis por humanos (ex: `api.minhaempresa.com`) em endereços IP numéricos (ex: `192.0.2.1` ou um IPv6).
   * **Como funciona (Resumo)**: O navegador consulta o cache local, depois o roteador, o ISP (Provedor de Internet) e, se necessário, os servidores raiz até encontrar o IP correspondente.
   * **Importância no System Design**:
     * **Latência**: Uma consulta DNS mal otimizada adiciona milissegundos preciosos à requisição inicial.

@@ -26,11 +26,11 @@ Abaixo do HTTP/HTTPS estão os protocolos de transporte que definem como os paco
 O **HTTP** (Hypertext Transfer Protocol) é o protocolo de camada de aplicação usado para transferir hipertexto na web. Ele opera no modelo de **Requisição e Resposta** (Client-Server).
 
   * **Anatomia de uma Requisição**:
-    * **Métodos (Verbos)**: GET (buscar dados), POST (criar dados), PUT/PATCH (atualizar dados) e DELETE (remover dados).
+    * **Métodos (Verbos)**: `GET` (buscar dados), `POST` (criar dados), `PUT/PATCH` (atualizar dados) e `DELETE` (remover dados).
     * **Status Codes**:
-      * 2xx (Sucesso - ex: 200 OK, 201 Created)
-      * 4xx (Erro do Cliente - ex: 400 Bad Request, 401 Unauthorized, 404 Not Found)
-      * 5xx (Erro do Servidor - ex: 500 Internal Server Error, 502 Bad Gateway)
+      * `2xx` (Sucesso - ex: `200 OK`, `201 Created`)
+      * `4xx` (Erro do Cliente - ex: `400 Bad Request`, `401 Unauthorized`, `404 Not Found`)
+      * `5xx` (Erro do Servidor - ex: `500 Internal Server Error`, `502 Bad Gateway`)
 
   * **Evolução (HTTP/1.1 vs HTTP/2 vs HTTP/3)**:
     * HTTP/1.1: Uma requisição por vez por conexão TCP (ou conexões paralelas limitadas). Sofria com o problema de Head-of-Line Blocking.

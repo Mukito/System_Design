@@ -32,12 +32,25 @@ O HTTP tradicional funciona no modelo "bate e volta" (request-response): o clien
   * **Vantagens**: Permite que dados fluam livremente em ambas as direções a qualquer momento, com baixíssima latência e sem o overhead de reabrir cabeçalhos HTTP a cada mensagem.
   * **Quando usar**: Chats de mensagens, dashboards de mercado financeiro em tempo real, jogos multiplayer baseados em navegador/app, e notificações push instantâneas.
 
-| **Tabela Comparativa de Decisão** |
-| **Critério** | REST (JSON) | gRPC (Protobuf) | WebSockets |
-| **Público-alvo** | Clientes externos (Web, Mobile) | Microsserviços internos | Clientes que exigem tempo real | 
-| **Protocolo Base** | HTTP/1.1 ou HTTP/2 | HTTP/2 | TCP (via upgrade HTTP) | 
-| **Formato dos Dados** | Texto (JSON / XML) | Binário estrito | Texto ou Binário livre | 
-| **Padrão de Fluxo** | Request / Response | Request / Response / Streaming | Bidirecional contínuo |
+
+
+### 📊 Comparativo de APIs e Estilos de Comunicação
+
+| Critério | REST (JSON) | gRPC (Protobuf) | WebSockets |
+| :--- | :--- | :--- | :--- |
+| **Público-alvo Principal** | Clientes externos (Web, Mobile, Terceiros) | Comunicação interna entre Microsserviços | Aplicações que exigem tempo real |
+| **Protocolo Base** | HTTP/1.1 ou HTTP/2 | HTTP/2 | TCP (via *upgrade* HTTP) |
+| **Formato dos Dados** | Texto legível (JSON / XML) | Binário estrito (Protocol Buffers) | Texto ou Binário livre |
+| **Padrão de Fluxo** | Request / Response (Unidirecional) | Request / Response e Streaming | Bidirecional contínuo (*Full-duplex*) |
+| **Latência e Performance** | Moderada (overhead de texto e cabeçalhos) | **Muito Baixa** (payloads compactos) | **Baixíssima** (sem overhead de conexão) |
+| **Suporte Nativo em Browsers**| Total (via `fetch` / `axios`) | Limitado (requer proxy *gRPC-Web*) | Total (via API nativa `WebSocket`) |
+| **Cacheamento HTTP** | Fácil e nativo (GETs são cacheáveis) | Difícil (requisições POST/binárias) | Não aplicável (fluxo contínuo) |
+| **Facilidade de Debug** | Alta (legível por humanos, cURL/Postman) | Média (exige ferramentas específicas) | Média (inspeção de frames no DevTools) |
+| **Casos de Uso Ideais** | APIs públicas, CRUDs, sistemas web padrão | Alta carga interna, IoT, baixa latência | Chats, jogos multiplayer, dashboards ao vivo |
+
+> **💡 Regra de Ouro para System Design:** Comece com **REST** para APIs públicas e integrações simples; migre para **gRPC** quando o gargalo de rede entre microsserviços internos exigir performance máxima; adote **WebSockets** apenas quando o servidor precisar enviar dados ativamente ao cliente em tempo real.
+
+
 
 
 
